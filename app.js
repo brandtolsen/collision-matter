@@ -1,12 +1,5 @@
-// first thing matter needs: an engine - computation and math
-// second thing matter needs: a renderer - this draw the engine
-
-// alias is a shortcut to make the code cleaner
-// const Engine = Matter.Engine
-// const Render = Matter.Render
 const {Engine, Render, Bodies, World, MouseConstraint, Composites} = Matter
 
-// where is matter being deployed
 const sectionTag = document.querySelector("section.shapes")
 
 const w = window.innerWidth
@@ -19,8 +12,7 @@ const renderer = Render.create({
     options: {
         height: h,
         width: w,
-        // background: "#ffffff",
-        background: "#000000",
+        background: "#ffffff",
         wireframes: false,
         pixelRatio: window.devicePixelRatio
     }
@@ -32,36 +24,48 @@ const createShape = function (x, y) {
     const randomNum = Math.random()
 
     if (randomNum > 0.5) {
-        return Bodies.rectangle(x, y, 38, 50, {
+        return Bodies.rectangle(x, y, 75, 62.25, {
             render: {
                 // fillStyle: "#475DA7"
                 sprite: {
-                    texture: "outline-2x.png",
-                    xScale: 0.5,
-                    yScale: 0.5
+                    texture: "halfcircle-2x.png",
+                    xScale: 0.75,
+                    yScale: 0.75
                 }
             }
         })
-    } else {
-        return Bodies.circle(x, y, 25, {
+    }
+    
+    else if (randomNum > 0.2) { 
+        return Bodies.rectangle(x, y, 50, 50, {
             render: {
                 // fillStyle: "#475DA7"
                 sprite: {
-                    texture: "ball.png",
-                    xScale: 0.5,
-                    yScale: 0.5
+                    texture: "yellowsquare-2x.png",
+                    xScale: 0.50,
+                    yScale: 0.50
                 }
             }
         })
     }
 
-
+    else {
+        return Bodies.circle(x, y, 75, {
+            render: {
+                // fillStyle: "#475DA7"
+                sprite: {
+                    texture: "circle-2x.png",
+                    xScale: 0.75,
+                    yScale: 0.75
+                }
+            }
+        })
+    }
 }
 
-const bigBall = Bodies.circle(w / 2, h / 2, Math.min(w/4, h/4), {
+const bigBall = Bodies.rectangle(w / 2, h / 2, Math.min(w/1.5, h/1.5), 110, {
     isStatic: true,
     render: {
-        // fillStyle: "#1E1F41"
         fillStyle: "#fff"
     }
 })
@@ -98,14 +102,8 @@ World.add(engine.world, [
     leftWall,
     rightWall,
     mouseControl,
-    initialShapes
+    initialShapes,
 ])
-
-// when we click the page, add a new shape
-document.addEventListener("click", function (event) {
-    const shape = createShape(event.pageX, event.pageY)
-    World.add(engine.world, shape)
-})
 
 // run both engine and renderer
 Engine.run(engine)

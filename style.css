@@ -2,7 +2,48 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
     line-height: 1.5;
-    background-color: #000;
+    background-color: #fff;
     color: #333;
     overflow: hidden;
+}
+.shapes {
+    position: relative;
+}
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+h1.title {
+    font-size: 100px;
+    font-family: 'Roboto';
+    color: #1E1F41;
+    margin: 0;
+}
+p.subtitle {
+    font-size: 24px;
+    font-family: 'Roboto';
+    color: #1E1F41;
+    text-align: center;
+    margin: 0;
+}
+
+/* ----------- Laptops ----------- */
+@media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 1) { 
+    h1.title {
+        font-size: 70px;
+    } 
+}
+/* Phones */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 812px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    h1.title {
+        font-size: 40px;
+    } 
 }

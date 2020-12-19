@@ -29,16 +29,33 @@ const renderer = Render.create({
 
 // create shapes
 const createShape = function (x, y) {
-    return Bodies.rectangle(x, y, 38, 50, {
-        render: {
-            // fillStyle: "#475DA7"
-            sprite: {
-                texture: "outline-2x.png",
-                xScale: 0.5,
-                yScale: 0.5
+    const randomNum = Math.random()
+
+    if (randomNum > 0.5) {
+        return Bodies.rectangle(x, y, 38, 50, {
+            render: {
+                // fillStyle: "#475DA7"
+                sprite: {
+                    texture: "outline-2x.png",
+                    xScale: 0.5,
+                    yScale: 0.5
+                }
             }
-        }
-    })
+        })
+    } else {
+        return Bodies.circle(x, y, 25, {
+            render: {
+                // fillStyle: "#475DA7"
+                sprite: {
+                    texture: "ball.png",
+                    xScale: 0.5,
+                    yScale: 0.5
+                }
+            }
+        })
+    }
+
+
 }
 
 const bigBall = Bodies.circle(w / 2, h / 2, Math.min(w/4, h/4), {

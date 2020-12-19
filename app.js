@@ -19,7 +19,8 @@ const renderer = Render.create({
     options: {
         height: h,
         width: w,
-        background: "#ffffff",
+        // background: "#ffffff",
+        background: "#000000",
         wireframes: false,
         pixelRatio: window.devicePixelRatio
     }
@@ -28,17 +29,23 @@ const renderer = Render.create({
 
 // create shapes
 const createShape = function (x, y) {
-    return Bodies.circle(x, y, 20 + 20 * Math.random(), {
+    return Bodies.rectangle(x, y, 38, 50, {
         render: {
-            fillStyle: "#475DA7"
+            // fillStyle: "#475DA7"
+            sprite: {
+                texture: "outline-2x.png",
+                xScale: 0.5,
+                yScale: 0.5
+            }
         }
     })
 }
 
-const bigBall = Bodies.circle(w / 2, h / 2, 250, {
+const bigBall = Bodies.circle(w / 2, h / 2, Math.min(w/4, h/4), {
     isStatic: true,
     render: {
-        fillStyle: "#1E1F41"
+        // fillStyle: "#1E1F41"
+        fillStyle: "#fff"
     }
 })
 
@@ -86,3 +93,8 @@ document.addEventListener("click", function (event) {
 // run both engine and renderer
 Engine.run(engine)
 Render.run(renderer)
+
+window.addEventListener("deviceorientation", function (event) {
+    engine.world.gravity.x = event.gamma / 30
+    engine.world.gravity.y = event.beta / 30
+})

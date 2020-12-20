@@ -20,14 +20,24 @@ const renderer = Render.create({
 
 // create vector shapes
 const boxA = function (x, y) {
-    return Bodies.rectangle(x, y, 75, 75, {
+    return Bodies.rectangle(x, y, Math.min(w/8, h/8), Math.min(w/8, h/8), {
+        frictionAir: 0,
+        friction: 0,
+        frictionStatic: 1,
+        inertia: Infinity,
+        restitution: 1,
         render: {
                     fillStyle: "#C6DBBA" // green
         }
     })
 }
 const boxB = function (x, y) {
-    return Bodies.rectangle(x, y, 100, 100, {
+    return Bodies.rectangle(x, y, Math.min(w/6, h/6), Math.min(w/6, h/6), {
+        frictionAir: 0,
+        friction: 0,
+        frictionStatic: 1,
+        inertia: Infinity,
+        restitution: 1,
         render: {
                     fillStyle: "#F7CA17" // yellow
         }
@@ -52,18 +62,6 @@ const createShape = function (x, y) {
     }
     
     else if (randomNum > 0.5) { 
-        return Bodies.circle(x, y, 50, {
-            render: {
-                sprite: {
-                    texture: "splitcircle-2x.png",
-                    xScale: 0.50,
-                    yScale: 0.50
-                }
-            }
-        })
-    }
-
-    else if (randomNum > 0.2) { 
         return Bodies.circle(x, y, 50, {
             render: {
                 sprite: {

@@ -119,7 +119,7 @@ const mouseControl = MouseConstraint.create(engine, {
     }
 })
 
-const initialShapes = Composites.stack(50, 50, 15, 4, 40, 40, function (x, y) {
+const initialShapes = Composites.stack(50, 50, 15, 2, 40, 40, function (x, y) {
     return createShape (x, y)
 })
 const box1 = Composites.stack(50, 50, 10, 1, 40, 40, function (x, y) {

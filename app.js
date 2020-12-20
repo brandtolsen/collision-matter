@@ -149,18 +149,3 @@ window.addEventListener("deviceorientation", function (event) {
     engine.world.gravity.x = event.gamma / 30
     engine.world.gravity.y = event.beta / 30
 })
-
-window.addEventListener("resize", function () {
-    w = window.innerWidth
-    h = window.innerHeight
-    renderer.canvas.width = w
-    renderer.canvas.height = h
-    renderer.canvas.style.width = w + "px"
-    renderer.canvas.style.height = h + "px" 
-    renderer.options.width = w
-    renderer.options.height = h
-    
-    Matter.Body.setStatic(transparentSquare, false)
-    transparentSquare.position =  { x: w / 2, y: h / 2 }
-    Matter.Body.setStatic(transparentSquare, true)
-  })
